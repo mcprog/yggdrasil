@@ -9,14 +9,10 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.mcprog.ygg.world.Entity;
 
-public class EntityAnimated {
+public class EntityAnimated extends Entity {
 
-	protected Body body;
-	protected BodyDef bodyDef;
-	protected FixtureDef fixtureDef;
-	protected Vector2 position;
-	protected World world;
 	protected Animation[] entityAnimations;
 	protected Sprite sprite;
 	protected int direction;
@@ -31,15 +27,10 @@ public class EntityAnimated {
 	public static final int DOWN_IDLE = 	7;
 	
 	public EntityAnimated(World world, Vector2 position) {
-		this.world = world;
-		this.position = position;
+		super(world, position);
 		
-		bodyDef = new BodyDef();
 		bodyDef.type = BodyType.DynamicBody;
-		bodyDef.position.set(position);
-		
-		body = world.createBody(bodyDef);
-		
+		initBody();
 	}
 	
 	public void draw (SpriteBatch batch, float stateTime) {
@@ -49,19 +40,9 @@ public class EntityAnimated {
 		sprite.draw(batch);
 	}
 	
-	public Vector2 getVelocity () {
-		return body.getLinearVelocity();
-	}
-	
-	public Vector2 getPosition () {
-		return body.getPosition();
-	}
-	
 	public int getDirection () {
 		return direction;
 	}
 	
-	public Body getBody () {
-		return body;
-	}
+	
 }

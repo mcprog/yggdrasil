@@ -9,7 +9,7 @@ public class Footman extends EntityAnimated {
 
 	public Footman(World world, Vector2 position) {
 		super(world, position);
-		entityAnimations = Assets.loadAnimations("footman.png");
+		entityAnimations = Assets.loadAnimations("spritesheets/footman.png");
 		
 		body = world.createBody(bodyDef);
 		

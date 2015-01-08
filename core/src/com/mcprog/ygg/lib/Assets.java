@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Assets {
 	
 	private static TextureRegion[][] map;
-	public static Animation[] playerAnimations;
 	public static Texture grassBackground;
 	
 	public static Animation[] loadAnimations (String resourceName) {
@@ -87,7 +86,7 @@ public class Assets {
 	}
 	
 	public static void loadBackgrounds () {
-		grassBackground = new Texture(Gdx.files.internal("grass_background.png"));
+		grassBackground = new Texture(Gdx.files.internal("textures/grass_background.png"));
 	}
 
 }

@@ -21,7 +21,7 @@ public class Player extends EntityAnimated {
 	
 	public Player(World world, Vector2 position) {
 		super(world, position);
-		entityAnimations = Assets.loadAnimations("player.png");
+		entityAnimations = Assets.loadAnimations("spritesheets/player.png");
 		
 		
 		body = world.createBody(bodyDef);
