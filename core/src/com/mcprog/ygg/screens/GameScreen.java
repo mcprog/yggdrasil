@@ -31,8 +31,16 @@ public class GameScreen implements Screen, ContactListener {
 	private float stateTime;
 	private Shrub testEntityShrub;
 	
+	private Vector2[][] tileLocations;
+	
 	public GameScreen(Yggdrasil gameInstance) {
 		Assets.loadBackgrounds();
+		tileLocations = new Vector2[3][3];
+		for (int i = 0; i < 3; ++i) {
+			for (int j = 0; j < 3; ++j) {
+				tileLocations[i][j] = new Vector2(Assets.grassBackground.getWidth() / 2 - i * Assets.grassBackground.getWidth(), Assets.grassBackground.getHeight() / 2 - j * Assets.grassBackground.getHeight());
+			}
+		}
 		game = gameInstance;
 		batch = new SpriteBatch();
 		world = new World(Vector2.Zero, true);
@@ -61,7 +69,15 @@ public class GameScreen implements Screen, ContactListener {
 		player.update();
 		footman.update(player.getPosition());
 		batch.begin();
-		batch.draw(Assets.grassBackground, -camera.viewportWidth / 2, -camera.viewportHeight / 2);
+		
+		for (Vector2[] arr : tileLocations) {
+			for (Vector2 v : arr) {
+				System.out.println(v);
+				batch.draw(Assets.grassBackground, v.x, v.y);
+			}
+		}
+//		batch.draw(Assets.grassBackground, -Assets.grassBackground.getWidth() / 2, -Assets.grassBackground.getWidth() /2 );
+//		batch.draw(Assets.grassBackground, -Assets.grassBackground.getWidth() * 1.5f, -Assets.grassBackground.getHeight() * .5f);
 		player.draw(batch, stateTime);
 		footman.draw(batch, stateTime);
 		batch.end();

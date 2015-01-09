@@ -12,7 +12,7 @@ public class Player extends EntityAnimated {
 	
 	
 	
-	
+	private int playerSpeed = 20;
 	
 	public static final int LEFT_BLOCK = 	8;
 	public static final int RIGHT_BLOCK = 	9;
@@ -58,19 +58,19 @@ public class Player extends EntityAnimated {
 		}
 		else if (!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
 			if (Gdx.input.isKeyPressed(Keys.A)) {
-				body.setLinearVelocity(-5, 0);
+				body.setLinearVelocity(-playerSpeed, 0);
 				direction = LEFT;
 			}
 			if (Gdx.input.isKeyPressed(Keys.D)) {
-				body.setLinearVelocity(5, 0);
+				body.setLinearVelocity(playerSpeed, 0);
 				direction = RIGHT;
 			}
 			if (Gdx.input.isKeyPressed(Keys.W)) {
-				body.setLinearVelocity(0, 5);
+				body.setLinearVelocity(0, playerSpeed);
 				direction = UP;
 			}
 			if (Gdx.input.isKeyPressed(Keys.S)) {
-				body.setLinearVelocity(0, -5);
+				body.setLinearVelocity(0, -playerSpeed);
 				direction = DOWN;
 			}
 		}
